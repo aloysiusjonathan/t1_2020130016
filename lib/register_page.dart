@@ -1,18 +1,18 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:t1_2020130016/main_page.dart';
-import 'package:t1_2020130016/register_page.dart';
+import 'package:t1_2020130016/signin_page.dart';
 
-class SignInPage extends StatefulWidget {
-  const SignInPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  _SignInPageState createState() => _SignInPageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _SignInPageState extends State<SignInPage> {
+class _RegisterPageState extends State<RegisterPage> {
   bool _isPasswordHidden = true;
+  bool isChecked = false; // Status awal checkbox
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,6 @@ class _SignInPageState extends State<SignInPage> {
     double redBoxWidth = boxWidth - 40.0;
 
     return Scaffold(
-      // Container Utama
       body: Container(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -30,7 +29,7 @@ class _SignInPageState extends State<SignInPage> {
           children: <Widget>[
             const SizedBox(height: 50),
             const Text(
-              'Sign In',
+              'Register',
               style: TextStyle(fontSize: 48.0, color: Colors.white),
             ),
             const SizedBox(height: 20),
@@ -44,10 +43,9 @@ class _SignInPageState extends State<SignInPage> {
             ),
             const SizedBox(height: 60),
             Center(
-              // Box Besar
               child: Container(
                 width: boxWidth,
-                height: 480.0,
+                height: 580.0,
                 decoration: BoxDecoration(
                   color: const Color.fromARGB(255, 13, 71, 61),
                   borderRadius: BorderRadius.circular(40),
@@ -75,15 +73,29 @@ class _SignInPageState extends State<SignInPage> {
                               height: 65.0,
                               margin: const EdgeInsets.only(right: 5.0),
                               decoration: BoxDecoration(
-                                color: const Color.fromARGB(255, 33, 150, 83),
+                                color: const Color.fromARGB(255, 8, 53, 46),
                                 borderRadius: BorderRadius.circular(15.0),
                               ),
-                              child: const Center(
-                                child: Text(
+                              child: TextButton(
+                                onPressed: () {
+                                  Navigator.pop(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const SignInPage()),
+                                  );
+                                },
+                                style: TextButton.styleFrom(
+                                    backgroundColor:
+                                        const Color.fromARGB(255, 8, 53, 46),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                    )),
+                                child: const Text(
                                   'My Account',
                                   style: TextStyle(
                                     fontSize: 16.0,
-                                    color: Colors.white,
+                                    color:
+                                        Color.fromARGB(255, 33, 150, 83),
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -95,29 +107,15 @@ class _SignInPageState extends State<SignInPage> {
                               height: 65.0,
                               margin: const EdgeInsets.only(left: 5.0),
                               decoration: BoxDecoration(
-                                color: const Color.fromARGB(255, 8, 53, 46),
+                                color: const Color.fromARGB(255, 33, 150, 83),
                                 borderRadius: BorderRadius.circular(15.0),
                               ),
-                              child: TextButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const RegisterPage()),
-                                  );
-                                },
-                                style: TextButton.styleFrom(
-                                    backgroundColor:
-                                        const Color.fromARGB(255, 8, 53, 46),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15),
-                                    )),
-                                child: const Text(
+                              child: const Center(
+                                child: Text(
                                   'Register',
                                   style: TextStyle(
                                     fontSize: 16.0,
-                                    color: Color.fromARGB(255, 33, 150, 83),
+                                    color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -129,6 +127,42 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                     Positioned(
                       top: 120.0,
+                      left: 20.0,
+                      right: 20.0,
+                      // Form Nama
+                      child: Container(
+                        width: redBoxWidth,
+                        height: 80.0,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white, width: 1.0),
+                          color: const Color.fromARGB(255, 13, 71, 61),
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        padding: const EdgeInsets.all(10.0),
+                        child: Row(
+                          children: [
+                            const Icon(
+                              Icons.person,
+                              color: Colors.white,
+                            ),
+                            const SizedBox(width: 15.0),
+                            Expanded(
+                              child: TextField(
+                                style: const TextStyle(color: Colors.white),
+                                decoration: InputDecoration(
+                                  hintText: 'Full name',
+                                  hintStyle: TextStyle(
+                                      color: Colors.white.withOpacity(0.5)),
+                                  border: InputBorder.none,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 220.0,
                       left: 20.0,
                       right: 20.0,
                       // Form Email
@@ -164,7 +198,7 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                     ),
                     Positioned(
-                      top: 220.0,
+                      top: 320.0,
                       left: 20.0,
                       right: 20.0,
                       // Form Password
@@ -215,10 +249,10 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                     ),
                     Positioned(
-                      top: 320.0,
+                      top: 420.0,
                       left: 20.0,
                       right: 20.0,
-                      // Teks
+                      // Checkbox
                       child: Container(
                         width: redBoxWidth,
                         height: 40.0,
@@ -226,25 +260,41 @@ class _SignInPageState extends State<SignInPage> {
                           color: const Color.fromARGB(255, 13, 71, 61),
                           borderRadius: BorderRadius.circular(10.0),
                         ),
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            SizedBox(width: 10.0),
+                            const SizedBox(width: 10.0),
+                            Checkbox(
+                              value: isChecked,
+                              onChanged: (value) {
+                                // Ketika checkbox diubah
+                                setState(() {
+                                  isChecked = value!;
+                                });
+                              },
+                              activeColor: Colors.white,
+                            ),
                             Text(
-                              'Forgot password?',
+                              'I accepted ',
+                              style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.white.withOpacity(0.5)),
+                            ),
+                            const Text(
+                              'Terms & Privacy Policy',
                               style: TextStyle(
                                   fontSize: 16.0, color: Colors.white),
                             ),
-                            SizedBox(width: 10.0),
+                            const SizedBox(width: 10.0),
                           ],
                         ),
                       ),
                     ),
                     Positioned(
-                      top: 380.0,
+                      top: 480.0,
                       left: 20.0,
                       right: 20.0,
-                      // Sign In Box
+                      // Continue Button
                       child: Container(
                         width: redBoxWidth,
                         height: 80.0,
@@ -254,10 +304,10 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                         child: TextButton(
                           onPressed: () {
-                            Navigator.push(
+                            Navigator.pop(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const MainPage()),
+                                  builder: (context) => const SignInPage()),
                             );
                           },
                           style: TextButton.styleFrom(
@@ -267,9 +317,9 @@ class _SignInPageState extends State<SignInPage> {
                                 borderRadius: BorderRadius.circular(15),
                               )),
                           child: const Text(
-                            'Sign In',
+                            'Continue',
                             style: TextStyle(
-                              fontSize: 24.0,
+                              fontSize: 20.0,
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
                             ),
