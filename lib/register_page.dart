@@ -11,13 +11,15 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  // Status awal password
   bool _isPasswordHidden = true;
-  bool isChecked = false; // Status awal checkbox
+  // Status awal checkbox
+  bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-
+    // Mencari lebar box berbeda
     double boxWidth = screenWidth - 10.0;
     double redBoxWidth = boxWidth - 40.0;
 
@@ -76,6 +78,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 color: const Color.fromARGB(255, 8, 53, 46),
                                 borderRadius: BorderRadius.circular(15.0),
                               ),
+                              // Navigation kembali ke Sign In Page
                               child: TextButton(
                                 onPressed: () {
                                   Navigator.pop(
@@ -316,6 +319,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15),
                               )),
+                              // Navigation kembali ke Sign In Page
                           child: const Text(
                             'Continue',
                             style: TextStyle(

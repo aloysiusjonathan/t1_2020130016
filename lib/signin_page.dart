@@ -98,6 +98,7 @@ class _SignInPageState extends State<SignInPage> {
                                 color: const Color.fromARGB(255, 8, 53, 46),
                                 borderRadius: BorderRadius.circular(15.0),
                               ),
+                              // Navigasi ke Register Page
                               child: TextButton(
                                 onPressed: () {
                                   Navigator.push(
@@ -252,6 +253,7 @@ class _SignInPageState extends State<SignInPage> {
                           color: const Color.fromARGB(255, 254, 194, 101),
                           borderRadius: BorderRadius.circular(20.0),
                         ),
+                        // Navigation ke Main Page
                         child: TextButton(
                           onPressed: () {
                             Navigator.push(
